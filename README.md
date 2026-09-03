@@ -8,7 +8,7 @@ Project ini dibuat menggunakan Laravel 12 sebagai bagian dari pembelajaran frame
 
 ## Tujuan Aplikasi
 
-Tujuan aplikasi ini adalah mempermudah pengelolaan aktivitas perpustakaan secara digital, mulai dari pengelolaan buku, data anggota, hingga proses peminjaman dan pengembalian buku.
+Tujuan aplikasi ini adalah mempermudah pengelolaan aktivitas perpustakaan secara digital, mulai dari pengelolaan buku, data anggota, hingga proses peminjaman dan pengembalian buku
 
 ## Cara Menjalankan Project
 
