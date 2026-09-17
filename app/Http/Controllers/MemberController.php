@@ -10,6 +10,7 @@ class MemberController extends Controller
     private array $members = [
         ['id' => 1, 'nama' => 'Laura Lady', 'nim' => '230101001', 'email' => 'laura@example.com', 'nomor_telepon' => '081234567890', 'alamat' => 'Surabaya', 'status' => 'aktif'],
         ['id' => 2, 'nama' => 'Prathista Rana', 'nim' => '230101002', 'email' => 'prathista@example.com', 'nomor_telepon' => '089876543210', 'alamat' => 'Sidoarjo', 'status' => 'aktif'],
+        ['id' => 3, 'nama' => 'Rizky Ramadhan', 'nim' => '230101003', 'email' => 'rizky@example.com', 'nomor_telepon' => '087654321098', 'alamat' => 'Malang', 'status' => 'nonaktif']
     ];
 
     public function index()
