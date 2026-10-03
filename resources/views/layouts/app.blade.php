@@ -18,6 +18,17 @@
         .btn { display: inline-block; padding: 6px 14px; background: #2563eb; color: #fff; text-decoration: none; border-radius: 4px; border: none; cursor: pointer; }
         form.inline { display: inline; }
         footer { text-align: center; padding: 20px; color: #6b7280; font-size: 14px; border-top: 1px solid #e5e7eb; margin-top: 40px; }
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 4px;
+            text-transform: capitalize;
+        }
+        .badge-success { background-color: #dcfce7; color: #15803d; } /* Hijau (dikembalikan) */
+        .badge-warning { background-color: #fef9c3; color: #a16207; } /* Kuning/Oranye (dipinjam) */
+        .badge-danger  { background-color: #fee2e2; color: #b91c1c; } /* Merah (terlambat) */
     </style>
 </head>
 <body>
