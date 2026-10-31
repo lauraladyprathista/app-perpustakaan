@@ -15,29 +15,17 @@ class UserSeeder extends Seeder
     {
         User::updateOrCreate(
             ['email' => 'admin@pens.ac.id'],
-            [
-                'name' => 'Admin Perpustakaan',
-                'password' => Hash::make('password'),
-                'role' => 'admin',
-            ]
+            ['name' => 'Bagus Wijaya', 'password' => \Illuminate\Support\Facades\Hash::make('password'), 'role' => 'admin']
         );
 
         User::updateOrCreate(
             ['email' => 'petugas1@pens.ac.id'],
-            [
-                'name' => 'Petugas Satu',
-                'password' => Hash::make('password'),
-                'role' => 'petugas',
-            ]
+            ['name' => 'Fina Rahmawati', 'password' => \Illuminate\Support\Facades\Hash::make('password'), 'role' => 'petugas']
         );
 
         User::updateOrCreate(
             ['email' => 'petugas2@pens.ac.id'],
-            [
-                'name' => 'Petugas Dua',
-                'password' => Hash::make('password'),
-                'role' => 'petugas',
-            ]
+            ['name' => 'Hafiz Fauzi', 'password' => \Illuminate\Support\Facades\Hash::make('password'), 'role' => 'petugas']
         );
     }
 }
