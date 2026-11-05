@@ -178,7 +178,3 @@ routes/api.php                  Route API
 config/services.php            Konfigurasi internal_api
 
 ```
-
-```
-
----

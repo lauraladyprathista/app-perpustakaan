@@ -215,7 +215,3 @@ Dokumentasi lengkap seluruh 11 endpoint ada di [`API.md`](API.md).
 | Halaman Dashboard menggantung | Panggilan API menuju port yang sama dengan server utama | Pastikan `INTERNAL_API_URL` memakai port berbeda (`8011`) |
 | Pagination tampil dengan ikon besar | View pagination custom belum terdaftar | Cek `Paginator::defaultView()` di `AppServiceProvider` |
 | Data kacau akibat uji coba | Data berubah saat latihan demo | Jalankan ulang `php artisan migrate:fresh --seed` |
-
-```
-
----

@@ -1,13 +1,14 @@
 # Dokumentasi REST API - Perpustakaan Digital Kampus
 
-Dokumen ini berisi daftar alamat (endpoint) REST API Pertemuan 9 yang digunakan untuk mengelola data perpustakaan.
+Dokumen ini berisi daftar alamat (endpoint) REST API Pertemuan 9 dan 10 yang digunakan untuk mengelola data perpustakaan.
 
 ### Catatan Penggunaan API:
-* **Alamat Utama (Base URL):** `http://127.0.0.1:8000/api`
-* **Format Balasan:** Aplikasi akan selalu membalas dalam format data JSON (masukkan header `Accept: application/json` di Thunder Client/Postman).
-* **Format Pengiriman Data:** Saat menambah atau mengubah data (POST/PUT), gunakan format JSON (header `Content-Type: application/json`).
-* **Keamanan:** Seluruh endpoint API saat ini bersifat publik (belum memerlukan token/login).
-* **Pembagian Halaman (Pagination):** Setiap daftar data (buku, anggota, peminjaman) dibatasi 10 data per halaman. Gunakan parameter `?page=2` untuk berpindah halaman.
+- **Alamat Utama (Base URL):** `http://127.0.0.1:8000/api`
+- **Format Balasan:** Aplikasi akan selalu membalas dalam format data JSON (masukkan header `Accept: application/json` di Thunder Client/Postman).
+- **Format Pengiriman Data:** Saat menambah atau mengubah data (POST/PUT), gunakan format JSON (header `Content-Type: application/json`).
+- **Keamanan:** Seluruh endpoint API saat ini bersifat publik (belum memerlukan token/login).
+- **Pembagian Halaman (Pagination):** Setiap daftar data (buku, anggota, peminjaman) dibatasi 10 data per halaman. Gunakan parameter `?page=2` untuk berpindah halaman.
+
 ---
 
 ## Ringkasan Endpoint
@@ -87,6 +88,8 @@ Menampilkan daftar buku (10 per halaman) beserta kategorinya.
     }
 }
 
+```
+
 ---
 
 ## 2. GET /api/books/{id}
@@ -97,19 +100,19 @@ Menampilkan detail satu data buku berdasarkan ID.
 
 ```json
 {
-  "data": {
-    "id": 1,
-    "judul": "Laskar Pelangi",
-    "penulis": "Andrea Hirata",
-    "penerbit": "Bentang Pustaka",
-    "tahun_terbit": 2005,
-    "isbn": "978-979-3062-79-2",
-    "stok": 5,
-    "category": {
-      "id": 1,
-      "nama_kategori": "Novel"
-    }
-  }
+  "data": {
+    "id": 1,
+    "judul": "Laskar Pelangi",
+    "penulis": "Andrea Hirata",
+    "penerbit": "Bentang Pustaka",
+    "tahun_terbit": 2005,
+    "isbn": "978-979-3062-79-2",
+    "stok": 5,
+    "category": {
+      "id": 1,
+      "nama_kategori": "Novel"
+    }
+  }
 }
 
 ```
@@ -118,7 +121,7 @@ Menampilkan detail satu data buku berdasarkan ID.
 
 ```json
 {
-  "message": "Resource not found."
+  "message": "Resource not found."
 }
 
 ```
@@ -133,13 +136,13 @@ Menambahkan data buku baru.
 
 ```json
 {
-  "judul": "Pemrograman Web Modern",
-  "penulis": "Ahmad",
-  "penerbit": "PENS Press",
-  "tahun_terbit": 2024,
-  "isbn": "978-602-1234-56-7",
-  "stok": 10,
-  "category_id": 4
+  "judul": "Pemrograman Web Modern",
+  "penulis": "Ahmad",
+  "penerbit": "PENS Press",
+  "tahun_terbit": 2024,
+  "isbn": "978-602-1234-56-7",
+  "stok": 10,
+  "category_id": 4
 }
 
 ```
@@ -148,17 +151,17 @@ Menambahkan data buku baru.
 
 ```json
 {
-  "message": "Buku berhasil ditambahkan.",
-  "data": {
-    "id": 21,
-    "judul": "Pemrograman Web Modern",
-    "penulis": "Ahmad",
-    "penerbit": "PENS Press",
-    "tahun_terbit": 2024,
-    "isbn": "978-602-1234-56-7",
-    "stok": 10,
-    "category_id": 4
-  }
+  "message": "Buku berhasil ditambahkan.",
+  "data": {
+    "id": 21,
+    "judul": "Pemrograman Web Modern",
+    "penulis": "Ahmad",
+    "penerbit": "PENS Press",
+    "tahun_terbit": 2024,
+    "isbn": "978-602-1234-56-7",
+    "stok": 10,
+    "category_id": 4
+  }
 }
 
 ```
@@ -167,12 +170,12 @@ Menambahkan data buku baru.
 
 ```json
 {
-  "message": "The judul field is required.",
-  "errors": {
-    "judul": [
-      "Judul buku wajib diisi."
-    ]
-  }
+  "message": "The judul field is required.",
+  "errors": {
+    "judul": [
+      "Judul buku wajib diisi."
+    ]
+  }
 }
 
 ```
@@ -187,13 +190,13 @@ Mengubah data buku yang sudah ada.
 
 ```json
 {
-  "judul": "Pemrograman Web Modern (Edisi Revisi)",
-  "penulis": "Ahmad",
-  "penerbit": "PENS Press",
-  "tahun_terbit": 2025,
-  "isbn": "978-602-1234-56-7",
-  "stok": 15,
-  "category_id": 4
+  "judul": "Pemrograman Web Modern (Edisi Revisi)",
+  "penulis": "Ahmad",
+  "penerbit": "PENS Press",
+  "tahun_terbit": 2025,
+  "isbn": "978-602-1234-56-7",
+  "stok": 15,
+  "category_id": 4
 }
 
 ```
@@ -202,12 +205,12 @@ Mengubah data buku yang sudah ada.
 
 ```json
 {
-  "message": "Buku berhasil diperbarui.",
-  "data": {
-    "id": 21,
-    "judul": "Pemrograman Web Modern (Edisi Revisi)",
-    "stok": 15
-  }
+  "message": "Buku berhasil diperbarui.",
+  "data": {
+    "id": 21,
+    "judul": "Pemrograman Web Modern (Edisi Revisi)",
+    "stok": 15
+  }
 }
 
 ```
@@ -222,7 +225,7 @@ Menghapus data buku berdasarkan ID.
 
 ```json
 {
-  "message": "Buku berhasil dihapus."
+  "message": "Buku berhasil dihapus."
 }
 
 ```
@@ -231,7 +234,7 @@ Menghapus data buku berdasarkan ID.
 
 ```json
 {
-  "message": "Resource not found."
+  "message": "Resource not found."
 }
 
 ```
@@ -252,30 +255,30 @@ Menampilkan daftar anggota perpustakaan (10 per halaman).
 
 ```json
 {
-  "data": [
-    {
-      "id": 1,
-      "nama": "Budi Santoso",
-      "nim": "3125600001",
-      "email": "budi.santoso@pens.ac.id",
-      "nomor_telepon": "081234567890",
-      "status": "aktif"
-    }
-  ],
-  "links": {
-    "first": "http://127.0.0.1:8000/api/members?page=1",
-    "last": "http://127.0.0.1:8000/api/members?page=2",
-    "prev": null,
-    "next": "http://127.0.0.1:8000/api/members?page=2"
-  },
-  "meta": {
-    "current_page": 1,
-    "from": 1,
-    "last_page": 2,
-    "per_page": 10,
-    "to": 10,
-    "total": 15
-  }
+  "data": [
+    {
+      "id": 1,
+      "nama": "Budi Santoso",
+      "nim": "3125600001",
+      "email": "budi.santoso@pens.ac.id",
+      "nomor_telepon": "081234567890",
+      "status": "aktif"
+    }
+  ],
+  "links": {
+    "first": "[http://127.0.0.1:8000/api/members?page=1](http://127.0.0.1:8000/api/members?page=1)",
+    "last": "[http://127.0.0.1:8000/api/members?page=2](http://127.0.0.1:8000/api/members?page=2)",
+    "prev": null,
+    "next": "[http://127.0.0.1:8000/api/members?page=2](http://127.0.0.1:8000/api/members?page=2)"
+  },
+  "meta": {
+    "current_page": 1,
+    "from": 1,
+    "last_page": 2,
+    "per_page": 10,
+    "to": 10,
+    "total": 15
+  }
 }
 
 ```
@@ -290,14 +293,14 @@ Menampilkan detail data anggota berdasarkan ID.
 
 ```json
 {
-  "data": {
-    "id": 1,
-    "nama": "Budi Santoso",
-    "nim": "3125600001",
-    "email": "budi.santoso@pens.ac.id",
-    "nomor_telepon": "081234567890",
-    "status": "aktif"
-  }
+  "data": {
+    "id": 1,
+    "nama": "Budi Santoso",
+    "nim": "3125600001",
+    "email": "budi.santoso@pens.ac.id",
+    "nomor_telepon": "081234567890",
+    "status": "aktif"
+  }
 }
 
 ```
@@ -306,7 +309,7 @@ Menampilkan detail data anggota berdasarkan ID.
 
 ```json
 {
-  "message": "Resource not found."
+  "message": "Resource not found."
 }
 
 ```
@@ -327,43 +330,43 @@ Menampilkan daftar transaksi peminjaman buku beserta relasinya (anggota, petugas
 
 ```json
 {
-  "data": [
-    {
-      "id": 1,
-      "tanggal_pinjam": "2026-11-01",
-      "tanggal_kembali": "2026-11-08",
-      "tanggal_dikembalikan": null,
-      "status": "dipinjam",
-      "member": {
-        "id": 1,
-        "nama": "Budi Santoso"
-      },
-      "petugas": {
-        "id": 2,
-        "name": "Siti Rahmawati"
-      },
-      "books": [
-        {
-          "id": 1,
-          "judul": "Laskar Pelangi"
-        }
-      ]
-    }
-  ],
-  "links": {
-    "first": "http://127.0.0.1:8000/api/loans?page=1",
-    "last": "http://127.0.0.1:8000/api/loans?page=1",
-    "prev": null,
-    "next": null
-  },
-  "meta": {
-    "current_page": 1,
-    "from": 1,
-    "last_page": 1,
-    "per_page": 10,
-    "to": 10,
-    "total": 10
-  }
+  "data": [
+    {
+      "id": 1,
+      "tanggal_pinjam": "2026-11-01",
+      "tanggal_kembali": "2026-11-08",
+      "tanggal_dikembalikan": null,
+      "status": "dipinjam",
+      "member": {
+        "id": 1,
+        "nama": "Budi Santoso"
+      },
+      "petugas": {
+        "id": 2,
+        "name": "Siti Rahmawati"
+      },
+      "books": [
+        {
+          "id": 1,
+          "judul": "Laskar Pelangi"
+        }
+      ]
+    }
+  ],
+  "links": {
+    "first": "[http://127.0.0.1:8000/api/loans?page=1](http://127.0.0.1:8000/api/loans?page=1)",
+    "last": "[http://127.0.0.1:8000/api/loans?page=1](http://127.0.0.1:8000/api/loans?page=1)",
+    "prev": null,
+    "next": null
+  },
+  "meta": {
+    "current_page": 1,
+    "from": 1,
+    "last_page": 1,
+    "per_page": 10,
+    "to": 10,
+    "total": 10
+  }
 }
 
 ```
@@ -378,11 +381,11 @@ Membuat transaksi peminjaman buku baru.
 
 ```json
 {
-  "member_id": 1,
-  "user_id": 2,
-  "tanggal_pinjam": "2026-11-01",
-  "tanggal_kembali": "2026-11-08",
-  "book_ids": [1, 3]
+  "member_id": 1,
+  "user_id": 2,
+  "tanggal_pinjam": "2026-11-01",
+  "tanggal_kembali": "2026-11-08",
+  "book_ids": [1, 3]
 }
 
 ```
@@ -391,15 +394,15 @@ Membuat transaksi peminjaman buku baru.
 
 ```json
 {
-  "message": "Peminjaman berhasil dibuat.",
-  "data": {
-    "id": 11,
-    "member_id": 1,
-    "user_id": 2,
-    "tanggal_pinjam": "2026-11-01",
-    "tanggal_kembali": "2026-11-08",
-    "status": "dipinjam"
-  }
+  "message": "Peminjaman berhasil dibuat.",
+  "data": {
+    "id": 11,
+    "member_id": 1,
+    "user_id": 2,
+    "tanggal_pinjam": "2026-11-01",
+    "tanggal_kembali": "2026-11-08",
+    "status": "dipinjam"
+  }
 }
 
 ```
@@ -408,12 +411,12 @@ Membuat transaksi peminjaman buku baru.
 
 ```json
 {
-  "message": "The member_id field is required.",
-  "errors": {
-    "member_id": [
-      "Pilih anggota peminjam."
-    ]
-  }
+  "message": "The member_id field is required.",
+  "errors": {
+    "member_id": [
+      "Pilih anggota peminjam."
+    ]
+  }
 }
 
 ```
@@ -428,12 +431,12 @@ Mengubah status peminjaman menjadi `dikembalikan` dan mengisi tanggal dikembalik
 
 ```json
 {
-  "message": "Buku berhasil dikembalikan.",
-  "data": {
-    "id": 11,
-    "status": "dikembalikan",
-    "tanggal_dikembalikan": "2026-11-05"
-  }
+  "message": "Buku berhasil dikembalikan.",
+  "data": {
+    "id": 11,
+    "status": "dikembalikan",
+    "tanggal_dikembalikan": "2026-11-05"
+  }
 }
 
 ```
@@ -442,7 +445,7 @@ Mengubah status peminjaman menjadi `dikembalikan` dan mengisi tanggal dikembalik
 
 ```json
 {
-  "message": "Resource not found."
+  "message": "Resource not found."
 }
 
 ```
@@ -457,11 +460,8 @@ Mengambil angka ringkasan statistik perpustakaan untuk dikonsumsi oleh Dashboard
 
 ```json
 {
-  "total_buku": 20,
-  "total_anggota": 15,
-  "peminjaman_aktif": 4
+  "total_buku": 20,
+  "total_anggota": 15,
+  "peminjaman_aktif": 4
 }
-
 ```
-
----
