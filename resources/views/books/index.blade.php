@@ -51,5 +51,4 @@
     </table>
 
     {{ $books->links() }}
-    <p><em>Catatan: kolom kategori sudah menampilkan nama kategori di Pertemuan 7.</em></p>
 @endsection
