@@ -86,3 +86,382 @@ Menampilkan daftar buku (10 per halaman) beserta kategorinya.
         "total": 1
     }
 }
+
+---
+
+## 2. GET /api/books/{id}
+
+Menampilkan detail satu data buku berdasarkan ID.
+
+**Response 200 OK:**
+
+```json
+{
+  "data": {
+    "id": 1,
+    "judul": "Laskar Pelangi",
+    "penulis": "Andrea Hirata",
+    "penerbit": "Bentang Pustaka",
+    "tahun_terbit": 2005,
+    "isbn": "978-979-3062-79-2",
+    "stok": 5,
+    "category": {
+      "id": 1,
+      "nama_kategori": "Novel"
+    }
+  }
+}
+
+```
+
+**Response 404 Not Found:**
+
+```json
+{
+  "message": "Resource not found."
+}
+
+```
+
+---
+
+## 3. POST /api/books
+
+Menambahkan data buku baru.
+
+**Request Body (JSON):**
+
+```json
+{
+  "judul": "Pemrograman Web Modern",
+  "penulis": "Ahmad",
+  "penerbit": "PENS Press",
+  "tahun_terbit": 2024,
+  "isbn": "978-602-1234-56-7",
+  "stok": 10,
+  "category_id": 4
+}
+
+```
+
+**Response 201 Created:**
+
+```json
+{
+  "message": "Buku berhasil ditambahkan.",
+  "data": {
+    "id": 21,
+    "judul": "Pemrograman Web Modern",
+    "penulis": "Ahmad",
+    "penerbit": "PENS Press",
+    "tahun_terbit": 2024,
+    "isbn": "978-602-1234-56-7",
+    "stok": 10,
+    "category_id": 4
+  }
+}
+
+```
+
+**Response 422 Unprocessable Entity:**
+
+```json
+{
+  "message": "The judul field is required.",
+  "errors": {
+    "judul": [
+      "Judul buku wajib diisi."
+    ]
+  }
+}
+
+```
+
+---
+
+## 4. PUT /api/books/{id}
+
+Mengubah data buku yang sudah ada.
+
+**Request Body (JSON):**
+
+```json
+{
+  "judul": "Pemrograman Web Modern (Edisi Revisi)",
+  "penulis": "Ahmad",
+  "penerbit": "PENS Press",
+  "tahun_terbit": 2025,
+  "isbn": "978-602-1234-56-7",
+  "stok": 15,
+  "category_id": 4
+}
+
+```
+
+**Response 200 OK:**
+
+```json
+{
+  "message": "Buku berhasil diperbarui.",
+  "data": {
+    "id": 21,
+    "judul": "Pemrograman Web Modern (Edisi Revisi)",
+    "stok": 15
+  }
+}
+
+```
+
+---
+
+## 5. DELETE /api/books/{id}
+
+Menghapus data buku berdasarkan ID.
+
+**Response 200 OK:**
+
+```json
+{
+  "message": "Buku berhasil dihapus."
+}
+
+```
+
+**Response 404 Not Found:**
+
+```json
+{
+  "message": "Resource not found."
+}
+
+```
+
+---
+
+## 6. GET /api/members
+
+Menampilkan daftar anggota perpustakaan (10 per halaman).
+
+**Query string (opsional):**
+
+| Parameter | Keterangan |
+| --- | --- |
+| `page` | Nomor halaman |
+
+**Response 200 OK:**
+
+```json
+{
+  "data": [
+    {
+      "id": 1,
+      "nama": "Budi Santoso",
+      "nim": "3125600001",
+      "email": "budi.santoso@pens.ac.id",
+      "nomor_telepon": "081234567890",
+      "status": "aktif"
+    }
+  ],
+  "links": {
+    "first": "http://127.0.0.1:8000/api/members?page=1",
+    "last": "http://127.0.0.1:8000/api/members?page=2",
+    "prev": null,
+    "next": "http://127.0.0.1:8000/api/members?page=2"
+  },
+  "meta": {
+    "current_page": 1,
+    "from": 1,
+    "last_page": 2,
+    "per_page": 10,
+    "to": 10,
+    "total": 15
+  }
+}
+
+```
+
+---
+
+## 7. GET /api/members/{id}
+
+Menampilkan detail data anggota berdasarkan ID.
+
+**Response 200 OK:**
+
+```json
+{
+  "data": {
+    "id": 1,
+    "nama": "Budi Santoso",
+    "nim": "3125600001",
+    "email": "budi.santoso@pens.ac.id",
+    "nomor_telepon": "081234567890",
+    "status": "aktif"
+  }
+}
+
+```
+
+**Response 404 Not Found:**
+
+```json
+{
+  "message": "Resource not found."
+}
+
+```
+
+---
+
+## 8. GET /api/loans
+
+Menampilkan daftar transaksi peminjaman buku beserta relasinya (anggota, petugas, dan buku yang dipinjam).
+
+**Query string (opsional):**
+
+| Parameter | Keterangan |
+| --- | --- |
+| `page` | Nomor halaman |
+
+**Response 200 OK:**
+
+```json
+{
+  "data": [
+    {
+      "id": 1,
+      "tanggal_pinjam": "2026-11-01",
+      "tanggal_kembali": "2026-11-08",
+      "tanggal_dikembalikan": null,
+      "status": "dipinjam",
+      "member": {
+        "id": 1,
+        "nama": "Budi Santoso"
+      },
+      "petugas": {
+        "id": 2,
+        "name": "Siti Rahmawati"
+      },
+      "books": [
+        {
+          "id": 1,
+          "judul": "Laskar Pelangi"
+        }
+      ]
+    }
+  ],
+  "links": {
+    "first": "http://127.0.0.1:8000/api/loans?page=1",
+    "last": "http://127.0.0.1:8000/api/loans?page=1",
+    "prev": null,
+    "next": null
+  },
+  "meta": {
+    "current_page": 1,
+    "from": 1,
+    "last_page": 1,
+    "per_page": 10,
+    "to": 10,
+    "total": 10
+  }
+}
+
+```
+
+---
+
+## 9. POST /api/loans
+
+Membuat transaksi peminjaman buku baru.
+
+**Request Body (JSON):**
+
+```json
+{
+  "member_id": 1,
+  "user_id": 2,
+  "tanggal_pinjam": "2026-11-01",
+  "tanggal_kembali": "2026-11-08",
+  "book_ids": [1, 3]
+}
+
+```
+
+**Response 201 Created:**
+
+```json
+{
+  "message": "Peminjaman berhasil dibuat.",
+  "data": {
+    "id": 11,
+    "member_id": 1,
+    "user_id": 2,
+    "tanggal_pinjam": "2026-11-01",
+    "tanggal_kembali": "2026-11-08",
+    "status": "dipinjam"
+  }
+}
+
+```
+
+**Response 422 Unprocessable Entity:**
+
+```json
+{
+  "message": "The member_id field is required.",
+  "errors": {
+    "member_id": [
+      "Pilih anggota peminjam."
+    ]
+  }
+}
+
+```
+
+---
+
+## 10. PUT /api/loans/{id}/kembalikan
+
+Mengubah status peminjaman menjadi `dikembalikan` dan mengisi tanggal dikembalikan.
+
+**Response 200 OK:**
+
+```json
+{
+  "message": "Buku berhasil dikembalikan.",
+  "data": {
+    "id": 11,
+    "status": "dikembalikan",
+    "tanggal_dikembalikan": "2026-11-05"
+  }
+}
+
+```
+
+**Response 404 Not Found:**
+
+```json
+{
+  "message": "Resource not found."
+}
+
+```
+
+---
+
+## 11. GET /api/stats
+
+Mengambil angka ringkasan statistik perpustakaan untuk dikonsumsi oleh Dashboard.
+
+**Response 200 OK:**
+
+```json
+{
+  "total_buku": 20,
+  "total_anggota": 15,
+  "peminjaman_aktif": 4
+}
+
+```
+
+---
